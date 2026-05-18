@@ -1,0 +1,91 @@
+{
+  "slug": "cardbiomedbench",
+  "name": "CARDBiomedBench",
+  "tagline": "A benchmark for evaluating LLMs on open-ended biomedical QA.",
+  "abstract": "Although large language models (LLMs) have the potential to transform biomedical research, their ability to reason accurately across complex, data-rich domains remains unproven. To address this research gap, we introduce CARDBiomedBench, a large-scale question-and-answer benchmark for evaluating LLMs in biomedical science. This pilot release focuses on neurodegenerative disease research, a field requiring the integration of genomics, pharmacology, and statistical reasoning. CARDBiomedBench includes more than 68 000 curated question–answer pairs generated through expert annotation and structured data augmentation. The questions spanned ten biological categories and nine reasoning types, based on publicly available resources, such as genome-wide association studies, summary data-based mendelian randomisation results, and regulatory drug databases. We assessed model responses using BioScore, a rubric-based evaluation system that measures response accuracy (response quality rate, RQR) and the ability to abstain from incorrect answers (safety rate). Testing 18 state-of-the-art LLMs revealed considerable gaps. Claude-3.5-Sonnet achieved high caution but low accuracy (safety rate 75%, RQR 24%), whereas GPT-4.1 showed the opposite trade-off (safety rate 7%, RQR 51%). No model showed a successful balance of both metrics. CARDBiomedBench provides a new standard for benchmarking biomedical LLMs, revealing key limitations in existing models and offering a scalable path towards safer, more effective artificial intelligence systems in scientific research.",
+  "citation": "@article{Bianchi2026CARDBiomedBench,\n  author = {Bianchi, Owen and Willey, Maya and Alvarado, Chelsea X and Danek, Benjamin and Khani, Marzieh and Kuznetsov, Nicole and Dadu, Anant and Shah, Syed and Koretsky, Mathew J and Makarious, Mary B and Weller, Cory and Levine, Kristin S and Kim, Sungwon and Jarreau, Paige and Vitale, Dan and Marsan, Elise and Iwaki, Hirotaka and Leonard, Hampton and Bandres-Ciga, Sara and Singleton, Andrew B and Nalls, Mike A and Mokhtari, Shekoofeh and Khashabi, Daniel and Faghri, Faraz},\n  title = {CARDBiomedBench: a benchmark for evaluating the performance of large language models in biomedical research},\n  journal = {The Lancet Digital Health},\n  year = {2026},\n  volume = {8},\n  number = {1},\n  pages = {100943},\n  doi = {10.1016/j.landig.2025.100943}\n}",
+  "authors": [
+    { "name": "Owen Bianchi" },
+    { "name": "Maya Willey", "link": "https://www.linkedin.com/in/mlwilley/" },
+    { "name": "Chelsea X Alvarado", "link": "https://www.linkedin.com/in/chelsea-alvarado/" },
+    { "name": "Benjamin Danek" },
+    { "name": "Marzieh Khani" },
+    { "name": "Nicole Kuznetsov" },
+    { "name": "Anant Dadu" },
+    { "name": "Syed Shah" },
+    { "name": "Mathew J Koretsky", "link": "https://www.linkedin.com/in/mkoretsky1/" },
+    { "name": "Mary B Makarious" },
+    { "name": "Cory Weller" },
+    { "name": "Kristin S Levine" },
+    { "name": "Sungwon Kim" },
+    { "name": "Paige Jarreau" },
+    { "name": "Dan Vitale" },
+    { "name": "Elise Marsan" },
+    { "name": "Hirotaka Iwaki" },
+    { "name": "Hampton Leonard" },
+    { "name": "Sara Bandres-Ciga" },
+    { "name": "Andrew B Singleton" },
+    { "name": "Mike A Nalls" },
+    { "name": "Shekoufeh Mokhtari" },
+    { "name": "Daniel Khashabi", "link": "https://danielkhashabi.com/" },
+    { "name": "Faraz Faghri", "link": "https://www.linkedin.com/in/farazfaghri/" }
+  ],
+  "lastUpdated": "2026-05-06",
+  "links": {
+    "paper": "https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00125-6/fulltext?rss=yes",
+    "github": "https://github.com/NIH-CARD/CARDBiomedBench",
+    "huggingface": "https://huggingface.co/datasets/NIH-CARD/CARDBiomedBench"
+  },
+  "leaderboards": [
+    {
+      "id": "base-models",
+      "title": "Base Models",
+      "description": "Standalone LLM performance on CARDBiomedBench, ranked by response quality rate (RQR).",
+      "columns": [
+        { "key": "rank", "label": "Rank" },
+        { "key": "model", "label": "Model" },
+        { "key": "quality_rate", "label": "RQR (%)" },
+        { "key": "safety_rate", "label": "SR (%)" }
+      ],
+      "models": [
+        { "rank": 1,  "model": "GPT-4.1",               "quality_rate": 51.1, "safety_rate": 7.4,  "link": "https://openai.com/index/gpt-4-1/" },
+        { "rank": 2,  "model": "o3",                     "quality_rate": 47.5, "safety_rate": 64.1, "link": "https://openai.com/index/introducing-o3-and-o4-mini/" },
+        { "rank": 3,  "model": "o3-mini",                "quality_rate": 46.6, "safety_rate": 45.7, "link": "https://openai.com/index/openai-o3-mini/" },
+        { "rank": 4,  "model": "GPT-5",                  "quality_rate": 44.9, "safety_rate": 76.4, "link": "https://openai.com/gpt-5/" },
+        { "rank": 5,  "model": "Perplexity-Sonar-Huge",  "quality_rate": 41.5, "safety_rate": 34.6, "link": "https://www.perplexity.ai/hub/blog/meet-new-sonar" },
+        { "rank": 6,  "model": "Gemini-2.5-Pro",         "quality_rate": 40.9, "safety_rate": 0.0, "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/"  },
+        { "rank": 7,  "model": "Gemini-2.5-Flash",       "quality_rate": 40.8, "safety_rate": 12.2, "link": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/" },
+        { "rank": 8,  "model": "GPT-5-Mini",             "quality_rate": 38.6, "safety_rate": 74.2, "link": "https://openai.com/index/introducing-gpt-5/" },
+        { "rank": 9,  "model": "Claude-3.7-Sonnet",      "quality_rate": 38.9, "safety_rate": 57.5, "link": "https://www.anthropic.com/news/claude-3-7-sonnet" },
+        { "rank": 10, "model": "GPT-4o",                 "quality_rate": 38.8, "safety_rate": 28.1, "link": "https://openai.com/index/hello-gpt-4o/" },
+        { "rank": 11, "model": "Claude-4.1-Opus",        "quality_rate": 36.4, "safety_rate": 72.9, "link": "https://www.anthropic.com/news/claude-opus-4-1" },
+        { "rank": 12, "model": "Gemini-2.0-Flash",       "quality_rate": 31.4, "safety_rate": 35.3, "link": "https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash" },
+        { "rank": 13, "model": "Claude-4.0-Sonnet",      "quality_rate": 30.3, "safety_rate": 76.5, "link": "https://www.anthropic.com/news/claude-4" },
+        { "rank": 14, "model": "GPT-3.5-Turbo",          "quality_rate": 27.6, "safety_rate": 69.5, "link": "https://developers.openai.com/api/docs/models/gpt-3.5-turbo" },
+        { "rank": 15, "model": "Claude-3.5-Sonnet",      "quality_rate": 24.2, "safety_rate": 75.1, "link": "https://www.anthropic.com/news/claude-3-5-sonnet" },
+        { "rank": 16, "model": "Gemma-2-27B",            "quality_rate": 23.1, "safety_rate": 61.2, "link": "https://blog.google/technology/developers/google-gemma-2/" },
+        { "rank": 17, "model": "Gemini-1.5-Pro",         "quality_rate": 22.7, "safety_rate": 6.0,  "link": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/" },
+        { "rank": 18, "model": "Llama-3.1-70B",          "quality_rate": 18.3, "safety_rate": 70.6, "link": "https://ai.meta.com/blog/meta-llama-3-1/" }
+      ]
+    },
+    {
+      "id": "agentic-systems",
+      "title": "Agentic Systems",
+      "description": "Agentic systems with planning, tools, or retrieval stacks, ranked by response quality rate (RQR).",
+      "columns": [
+        { "key": "rank", "label": "Rank" },
+        { "key": "model", "label": "System" },
+        { "key": "quality_rate", "label": "RQR (%)" },
+        { "key": "safety_rate", "label": "SR (%)" }
+      ],
+      "models": [
+        { "rank": 1, "model": "DataTecnica-Genomics-Agent", "quality_rate": 80.3, "safety_rate": 56.7, "link": "https://www.datatecnica.com/blog/meet-datatecnica-genomics-agent-your-new-scientific-ai-assistant-for-alzheimers-research" }
+      ]
+    }
+  ],
+  "notes": [
+    "Scores shown here are placeholders for scaffold purposes.",
+    "Replace this section with evaluation setup, dataset scope, and submission policy.",
+    "You can add model cards, papers, or reproducibility links directly in the table rows."
+  ]
+}

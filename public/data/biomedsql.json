@@ -1,0 +1,87 @@
+{
+  "slug": "biomedsql",
+  "name": "BiomedSQL",
+  "tagline": "Text-to-SQL benchmark for biomedical database querying.",
+  "abstract": "Biomedical researchers increasingly rely on large-scale structured databases for complex analytical tasks. However, current text-to-SQL systems often struggle to map qualitative scientific questions into executable SQL, particularly when implicit domain reasoning is required. We introduce BiomedSQL, the first benchmark explicitly designed to evaluate scientific reasoning in text-to-SQL generation over a real-world biomedical knowledge base. BiomedSQL comprises 68,000 question/SQL query/answer triples generated from templates and grounded in a harmonized BigQuery knowledge base that integrates gene-disease associations, causal inference from omics data, and drug approval records. Each question requires models to infer domain-specific criteria, such as genome-wide significance thresholds, effect directionality, or trial phase filtering, rather than rely on syntactic translation alone. We evaluate a range of open- and closed-source LLMs across prompting strategies and interaction paradigms. Our results reveal a substantial performance gap: Gemini-3-Pro achieves 58.1% execution accuracy, while our custom multi-step agent, BMSQL, reaches 62.6%, both well below the expert baseline of 90.0%. BiomedSQL provides a new foundation for advancing text-to-SQL systems capable of supporting scientific discovery through robust reasoning over structured biomedical knowledge bases. Our dataset is publicly available at https://huggingface.co/datasets/NIH-CARD/BiomedSQL, and our code is open-source at https://github.com/NIH-CARD/biomedsql.",
+  "citation": "@article{koretsky2025biomedsql,\n  title={BiomedSQL: Text-to-SQL for Scientific Reasoning on Biomedical Knowledge Bases},\n  author={Koretsky, Mathew J. and Willey, Maya and Bianchi, Owen and Alvarado, Chelsea X. and Nayak, Tanay and Kuznetsov, Nicole and Kim, Sungwon and Nalls, Mike A. and Khashabi, Daniel and Faghri, Faraz},\n  journal={arXiv preprint arXiv:2505.20321},\n  year={2025},\n  note={Accepted at Gen2 Workshop, ICLR 2026}\n}",
+  "authors": [
+    { "name": "Mathew J Koretsky", "link": "https://www.linkedin.com/in/mkoretsky1/" },
+    { "name": "Maya Willey", "link": "https://www.linkedin.com/in/mlwilley/" },
+    { "name": "Owen Bianchi" },
+    { "name": "Chelsea X Alvarado", "link": "https://www.linkedin.com/in/chelsea-alvarado/" },
+    { "name": "Tanay Nayak", "link": "https://www.linkedin.com/in/tanay-nayak/" },
+    { "name": "Nicole Kuznetsov" },
+    { "name": "Sungwon Kim" },
+    { "name": "Mike A Nalls" },
+    { "name": "Daniel Khashabi", "link": "https://danielkhashabi.com/" },
+    { "name": "Faraz Faghri", "link": "https://www.linkedin.com/in/farazfaghri/" }
+  ],
+  "lastUpdated": "2026-05-06",
+  "links": {
+    "paper": "https://arxiv.org/abs/2505.20321",
+    "github": "https://github.com/NIH-CARD/biomedsql",
+    "huggingface": "https://huggingface.co/datasets/NIH-CARD/BiomedSQL"
+  },
+  "leaderboards": [
+    {
+      "id": "base-models",
+      "title": "Base Models",
+      "description": "Standalone LLM text-to-SQL performance on BiomedSQL, ranked by execution accuracy (EX).",
+      "columns": [
+        { "key": "rank", "label": "Rank" },
+        { "key": "model", "label": "Model" },
+        { "key": "ex",  "label": "EX (%)" },
+        { "key": "jac", "label": "JAC (%)" },
+        { "key": "rqr", "label": "RQR (%)" },
+        { "key": "sr",  "label": "SR (%)" }
+      ],
+      "models": [
+        { "rank": 0,  "model": "Domain Expert", "ex": 90.0, "jac": 90.0, "rqr": 95.0, "sr": "NA", "isBaseline": true },
+        { "rank": 1,  "model": "Gemini-3-Pro",          "ex": 58.1, "jac": 62.4, "rqr": 81.8, "sr": 52.4, "link": "https://blog.google/products-and-platforms/products/gemini/gemini-3/" },
+        { "rank": 2,  "model": "Claude-4.5-Opus",      "ex": 54.8, "jac": 59.7, "rqr": 80.6, "sr": 35.8, "link": "https://www.anthropic.com/news/claude-opus-4-5" },
+        { "rank": 3,  "model": "GPT-o3-mini",           "ex": 53.5, "jac": 60.4, "rqr": 73.3, "sr": 29.4, "link": "https://openai.com/index/openai-o3-mini/" },
+        { "rank": 4,  "model": "GPT-5.2",               "ex": 48.5, "jac": 54.6, "rqr": 75.3, "sr": 35.6, "link": "https://openai.com/index/introducing-gpt-5-2/" },
+        { "rank": 5,  "model": "GPT-4o",                "ex": 46.9, "jac": 54.7, "rqr": 71.2, "sr": 26.1, "link": "https://openai.com/index/hello-gpt-4o/" },
+        { "rank": 6,  "model": "Claude-3.7-Sonnet",     "ex": 45.4, "jac": 49.8, "rqr": 69.8, "sr": 43.0, "link": "https://www.anthropic.com/news/claude-3-7-sonnet" },
+        { "rank": 7,  "model": "Qwen-2.5-Coder-32B",   "ex": 40.8, "jac": 44.4, "rqr": 58.2, "sr": 61.0, "link": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct" },
+        { "rank": 8,  "model": "Llama-3.1-405B",        "ex": 38.1, "jac": 42.5, "rqr": 57.9, "sr": 41.7, "link": "https://ai.meta.com/blog/meta-llama-3-1/" },
+        { "rank": 9,  "model": "Qwen-2.5-Coder-14B",   "ex": 37.0, "jac": 32.4, "rqr": 62.1, "sr": 42.5, "link": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct" },
+        { "rank": 10, "model": "Llama-3.1-70B",         "ex": 34.4, "jac": 39.8, "rqr": 57.0, "sr": 37.0, "link": "https://ai.meta.com/blog/meta-llama-3-1/" },
+        { "rank": 11, "model": "Gemini-2.0-Flash",      "ex": 33.7, "jac": 37.0, "rqr": 71.1, "sr": 27.2, "link": "https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash" }
+      ]
+    },
+    {
+      "id": "agentic-systems",
+      "title": "Agentic Systems",
+      "description": "Agentic SQL systems with planning, tools, or iterative execution loops, ranked by execution accuracy (EX). BMSQL is our custom text-to-SQL system (more details in [paper](https://arxiv.org/abs/2505.20321)).",
+      "columns": [
+        { "key": "rank", "label": "Rank" },
+        { "key": "model", "label": "System" },
+        { "key": "ex",  "label": "EX (%)" },
+        { "key": "jac", "label": "JAC (%)" },
+        { "key": "rqr", "label": "RQR (%)" },
+        { "key": "sr",  "label": "SR (%)" }
+      ],
+      "models": [
+        { "rank": 0,  "model": "Domain Expert",        "ex": 90.0, "jac": 90.0, "rqr": 95.0, "sr": "NA", "isBaseline": true },
+        { "rank": 1,  "model": "BMSQL-GPT-o3-mini",    "ex": 62.6, "jac": 69.2, "rqr": 83.1, "sr": 38.0, "link": "https://github.com/NIH-CARD/biomedsql/tree/main/handlers/sql" },
+        { "rank": 2,  "model": "DAIL-SQL-GPT-o3-mini", "ex": 61.2, "jac": 63.6, "rqr": 81.4, "sr": 42.1, "link": "https://github.com/BeachWang/DAIL-SQL" },
+        { "rank": 3,  "model": "BMSQL-GPT-4o",         "ex": 60.4, "jac": 67.2, "rqr": 79.8, "sr": 64.5, "link": "https://github.com/NIH-CARD/biomedsql/tree/main/handlers/sql" },
+        { "rank": 4,  "model": "ReAct-GPT-o3-mini",    "ex": 56.2, "jac": 64.8, "rqr": 73.6, "sr": 13.2, "link": "https://arxiv.org/abs/2210.03629" },
+        { "rank": 5,  "model": "BMSQL-Gemini-2.0-Flash",        "ex": 55.9, "jac": 61.3, "rqr": 84.6, "sr": 32.1, "link": "https://github.com/NIH-CARD/biomedsql/tree/main/handlers/sql" },
+        { "rank": 6,  "model": "DAIL-SQL-GPT-4o",      "ex": 54.8, "jac": 58.1, "rqr": 75.5, "sr": 63.4, "link": "https://github.com/BeachWang/DAIL-SQL" },
+        { "rank": 7,  "model": "DAIL-SQL-Gemini-2.0-Flash",     "ex": 53.1, "jac": 58.8, "rqr": 82.8, "sr": 30.6, "link": "https://github.com/BeachWang/DAIL-SQL" },
+        { "rank": 8,  "model": "ReAct-GPT-4o",         "ex": 49.6, "jac": 57.9, "rqr": 67.2, "sr": 8.9, "link": "https://arxiv.org/abs/2210.03629"  },
+        { "rank": 9,  "model": "ReAct-Gemini-2.0-Flash",        "ex": 48.9, "jac": 56.6, "rqr": 60.4, "sr": 10.2, "link": "https://arxiv.org/abs/2210.03629" },
+        { "rank": 10, "model": "Index-Gemini-2.0-Flash",        "ex": 46.1, "jac": 48.5, "rqr": 54.2, "sr": 59.6, "link": "https://www.llamaindex.ai/" },
+        { "rank": 11, "model": "Index-GPT-o3-mini",    "ex": 27.1, "jac": 30.6, "rqr": 44.1, "sr": 47.5, "link": "https://www.llamaindex.ai/" },
+        { "rank": 12, "model": "Index-GPT-4o",         "ex": 25.5, "jac": 28.3, "rqr": 44.1, "sr": 66.9, "link": "https://www.llamaindex.ai/" }
+      ]
+    }
+  ],
+  "notes": [
+    "Use this benchmark page for SQL task description, schema coverage, and evaluation metric definitions.",
+    "You can split results into dev and test views later without changing the overall site architecture.",
+    "Add downloadable artifacts or prompt specs as simple links in this page."
+  ]
+}
