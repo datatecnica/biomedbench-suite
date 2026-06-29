@@ -37,6 +37,19 @@ export function SiteShell({ children }: PropsWithChildren) {
               alt="CARD logo"
             />
           </a>
+          <a
+            className="top-banner__link"
+            href="https://codon.bio/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit codon.bio"
+          >
+            <img
+              className="top-banner__logo top-banner__logo--codon"
+              src={`${import.meta.env.BASE_URL}assets/project-icon.svg`}
+              alt="codon.bio logo"
+            />
+          </a>
         </div>
       </div>
       <div className="site-shell">

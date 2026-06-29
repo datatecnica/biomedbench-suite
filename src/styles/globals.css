@@ -79,6 +79,11 @@ a {
   height: 45px;
 }
 
+.top-banner__logo--codon {
+  height: 54px;
+  margin-left: -10px;
+}
+
 .hero {
   margin-bottom: 24px;
   padding: 24px 28px 32px;
@@ -269,6 +274,11 @@ a {
 
   .top-banner__logo--card {
     height: 34px;
+  }
+
+  .top-banner__logo--codon {
+    height: 40px;
+    margin-left: -6px;
   }
 
   .tabs {
