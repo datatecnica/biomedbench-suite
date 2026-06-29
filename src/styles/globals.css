@@ -695,6 +695,21 @@ tbody a:hover,
   text-decoration: none;
   transition: transform 160ms ease, box-shadow 160ms ease;
   border-color: var(--border);
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+}
+
+.info-link-card__icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.info-link-card__copy {
+  display: grid;
+  row-gap: 6px;
+  min-width: 0;
 }
 
 .info-link-card strong {

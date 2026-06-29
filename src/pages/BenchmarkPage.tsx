@@ -10,8 +10,8 @@ type Props = {
 
 const relatedLinks = [
   {
-    title: "Coming Soon: Dragon",
-    href: "#",
+    title: "codon.bio",
+    href: "https://codon.bio/",
     description: "An AI co-scientist for all of your biomedical research needs.",
   },
 ];
@@ -154,8 +154,16 @@ export function BenchmarkPage({ dataPath }: Props) {
               target="_blank"
               rel="noreferrer"
             >
-              <strong>{link.title}</strong>
-              <span>{link.description}</span>
+              <img
+                className="info-link-card__icon"
+                src={`${import.meta.env.BASE_URL}assets/project-icon.svg`}
+                alt=""
+                aria-hidden="true"
+              />
+              <span className="info-link-card__copy">
+                <strong>{link.title}</strong>
+                <span>{link.description}</span>
+              </span>
             </a>
           ))}
         </section>
