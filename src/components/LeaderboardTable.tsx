@@ -24,9 +24,12 @@ type Props = {
 
 type SortState = { key: string; dir: "asc" | "desc" };
 
-function formatValue(value: string | number | undefined) {
+function formatValue(value: string | number | boolean | undefined) {
   if (typeof value === "number") {
     return Number.isInteger(value) ? value : value.toFixed(1);
+  }
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
   }
 
   return value ?? "—";
