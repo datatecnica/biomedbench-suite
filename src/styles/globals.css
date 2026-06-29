@@ -20,11 +20,13 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-y: scroll;
   background: #ffffff;
   color: var(--text);
   font-family: "Segoe UI", "Helvetica Neue", sans-serif;
@@ -77,6 +79,11 @@ a {
 
 .top-banner__logo--card {
   height: 45px;
+}
+
+.top-banner__logo--codon {
+  height: 54px;
+  margin-left: -10px;
 }
 
 .hero {
@@ -269,6 +276,11 @@ a {
 
   .top-banner__logo--card {
     height: 34px;
+  }
+
+  .top-banner__logo--codon {
+    height: 40px;
+    margin-left: -6px;
   }
 
   .tabs {
@@ -695,13 +707,30 @@ tbody a:hover,
   text-decoration: none;
   transition: transform 160ms ease, box-shadow 160ms ease;
   border-color: var(--border);
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+}
+
+.info-link-card__icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.info-link-card__copy {
+  display: grid;
+  row-gap: 6px;
+  min-width: 0;
 }
 
 .info-link-card strong {
   display: block;
-  color: var(--text);
+  color: #46bca4;
   font-size: 1rem;
   line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .info-link-card:hover {

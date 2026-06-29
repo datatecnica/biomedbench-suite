@@ -2,7 +2,7 @@ import React from "react";
 import { LeaderboardTable } from "../components/LeaderboardTable";
 import { useBenchmarkData } from "../lib/useBenchmarkData";
 import type { BenchmarkAuthor, BenchmarkLeaderboard } from "../lib/types";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   dataPath: string;
@@ -10,14 +10,9 @@ type Props = {
 
 const relatedLinks = [
   {
-    title: "Coming Soon: Dragon",
-    href: "#",
+    title: "codon.bio",
+    href: "https://codon.bio/",
     description: "An AI co-scientist for all of your biomedical research needs.",
-  },
-  {
-    title: "BiomedArena.AI",
-    href: "https://biomedarena.ai/",
-    description: "Transparent evaluation of AI models on biomedical tasks through community comparisons.",
   },
 ];
 
@@ -111,9 +106,14 @@ export function BenchmarkPage({ dataPath }: Props) {
             reasoning and SQL categories, identifying failure modes that persist
             across modalities.
           </p>
-          <Link className="benchmark-pill" to={location.pathname}>
+          <a
+            className="benchmark-pill"
+            href="https://openreview.net/forum?id=YnyrQE7O7C#discussion"
+            target="_blank"
+            rel="noreferrer"
+          >
             BiomedBench Suite Paper
-          </Link>
+          </a>
         </article>
 
         <article className="copy-card benchmark-sidebar__card">
@@ -154,8 +154,16 @@ export function BenchmarkPage({ dataPath }: Props) {
               target="_blank"
               rel="noreferrer"
             >
-              <strong>{link.title}</strong>
-              <span>{link.description}</span>
+              <img
+                className="info-link-card__icon"
+                src={`${import.meta.env.BASE_URL}assets/project-icon.svg`}
+                alt=""
+                aria-hidden="true"
+              />
+              <span className="info-link-card__copy">
+                <strong>{link.title}</strong>
+                <span>{link.description}</span>
+              </span>
             </a>
           ))}
         </section>
