@@ -14,11 +14,6 @@ const relatedLinks = [
     href: "#",
     description: "An AI co-scientist for all of your biomedical research needs.",
   },
-  {
-    title: "BiomedArena.AI",
-    href: "https://biomedarena.ai/",
-    description: "Transparent evaluation of AI models on biomedical tasks through community comparisons.",
-  },
 ];
 
 function renderWithLinks(text: string) {
