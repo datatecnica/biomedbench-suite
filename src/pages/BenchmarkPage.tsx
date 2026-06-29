@@ -2,7 +2,7 @@ import React from "react";
 import { LeaderboardTable } from "../components/LeaderboardTable";
 import { useBenchmarkData } from "../lib/useBenchmarkData";
 import type { BenchmarkAuthor, BenchmarkLeaderboard } from "../lib/types";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   dataPath: string;
@@ -111,9 +111,14 @@ export function BenchmarkPage({ dataPath }: Props) {
             reasoning and SQL categories, identifying failure modes that persist
             across modalities.
           </p>
-          <Link className="benchmark-pill" to={location.pathname}>
+          <a
+            className="benchmark-pill"
+            href="https://openreview.net/forum?id=YnyrQE7O7C#discussion"
+            target="_blank"
+            rel="noreferrer"
+          >
             BiomedBench Suite Paper
-          </Link>
+          </a>
         </article>
 
         <article className="copy-card benchmark-sidebar__card">

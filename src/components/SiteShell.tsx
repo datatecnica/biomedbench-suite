@@ -72,7 +72,7 @@ export function SiteShell({ children }: PropsWithChildren) {
         </header>
         <main>{children}</main>
         <footer className="footer">
-          <span>BiomedBench Suite</span>
+          <a href="https://openreview.net/forum?id=YnyrQE7O7C#discussion" target="_blank" rel="noreferrer">BiomedBench Suite</a>
           <a href="https://www.datatecnica.com/" target="_blank" rel="noreferrer">DataTecnica</a>
         </footer>
       </div>
