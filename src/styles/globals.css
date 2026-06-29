@@ -724,9 +724,11 @@ tbody a:hover,
 
 .info-link-card strong {
   display: block;
-  color: var(--text);
+  color: #46bca4;
   font-size: 1rem;
   line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .info-link-card:hover {
