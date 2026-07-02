@@ -97,7 +97,9 @@ export function BenchmarkPage({ dataPath }: Props) {
           <p className="benchmark-header__tagline benchmark-sidebar__tagline">
             <strong>CARDBiomedBench</strong> evaluates open-ended QA in neurodegenerative
             disease research, scored for both accuracy and abstention.
-            <strong> BiomedSQL</strong> extends the question set to a
+          </p>
+          <p className="benchmark-header__tagline benchmark-sidebar__tagline">
+            <strong>BiomedSQL</strong> extends the question set to a
             harmonized biomedical knowledge base and evaluates text-to-SQL
             generation that requires implicit domain reasoning.
           </p>
