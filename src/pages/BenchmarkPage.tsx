@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { LeaderboardTable } from "../components/LeaderboardTable";
 import { useBenchmarkData } from "../lib/useBenchmarkData";
 import type { BenchmarkAuthor, BenchmarkLeaderboard } from "../lib/types";
-import { useLocation } from "react-router-dom";
 
 type Props = {
   dataPath: string;
@@ -54,7 +53,7 @@ function renderAuthors(authors: BenchmarkAuthor[]) {
 
 export function BenchmarkPage({ dataPath }: Props) {
   const { data, error, loading } = useBenchmarkData(dataPath);
-  const location = useLocation();
+  const [citationCopied, setCitationCopied] = useState(false);
 
   if (loading) {
     return <section className="status-card">Loading benchmark data…</section>;
@@ -81,6 +80,24 @@ export function BenchmarkPage({ dataPath }: Props) {
             },
           ]
         : [];
+  const citationText = data.citation ?? "Add benchmark citation here.";
+  const copyCitation = async () => {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(citationText);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = citationText;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.append(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    }
+    setCitationCopied(true);
+    window.setTimeout(() => setCitationCopied(false), 1800);
+  };
+
   return (
     <div className="benchmark-layout">
       <aside className="benchmark-sidebar">
@@ -252,9 +269,22 @@ export function BenchmarkPage({ dataPath }: Props) {
                 <span className="overview-expander__toggle-less">Less</span>
               </span>
             </summary>
-            <pre className="overview-expander__body overview-expander__body--citation">
-              <code>{data.citation ?? "Add benchmark citation here."}</code>
-            </pre>
+            <div className="overview-expander__body overview-expander__citation-wrap">
+              <pre className="overview-expander__body--citation">
+                <code>{citationText}</code>
+              </pre>
+              <button
+                className={`citation-copy-button${
+                  citationCopied ? " citation-copy-button--copied" : ""
+                }`}
+                type="button"
+                onClick={copyCitation}
+                aria-label={citationCopied ? "Citation copied" : "Copy citation"}
+                title={citationCopied ? "Copied" : "Copy"}
+              >
+                {citationCopied ? "Copied" : "Copy"}
+              </button>
+            </div>
           </details>
         </article>
         {leaderboards.map((leaderboard) => (

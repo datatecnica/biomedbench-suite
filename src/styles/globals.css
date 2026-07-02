@@ -513,9 +513,16 @@ a {
   max-width: 72ch;
 }
 
+.overview-expander__citation-wrap {
+  position: relative;
+  max-width: 72ch;
+}
+
 .overview-expander__body--citation {
   overflow-x: auto;
+  margin: 0;
   padding: 16px 18px;
+  padding-bottom: 56px;
   border: 1px solid rgba(92, 97, 128, 0.28);
   border-radius: 14px;
   background: rgba(245, 247, 250, 0.92);
@@ -527,6 +534,50 @@ a {
 
 .overview-expander__body--citation code {
   display: block;
+}
+
+.citation-copy-button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  padding: 8px 14px;
+  border: 1px solid rgba(127, 63, 121, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 8px 22px rgba(80, 73, 102, 0.12);
+  transition: background-color 160ms ease, border-color 160ms ease,
+    color 160ms ease, transform 160ms ease;
+}
+
+.citation-copy-button:hover {
+  background: rgba(127, 63, 121, 0.08);
+  border-color: rgba(127, 63, 121, 0.46);
+  transform: translateY(-1px);
+}
+
+.citation-copy-button--copied,
+.citation-copy-button--copied:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #ffffff;
+  transform: translateY(0);
+}
+
+.citation-copy-button:focus-visible {
+  outline: 3px solid rgba(113, 219, 197, 0.5);
+  outline-offset: 2px;
 }
 
 .overview-expander__etal {
